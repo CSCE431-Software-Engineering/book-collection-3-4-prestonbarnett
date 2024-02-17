@@ -1,0 +1,26 @@
+<%= form_with(model: user_book) do |form| %>
+  <% content_for :alert_content do %>
+    <% if user_book.errors.any? %>
+      <h4><%= pluralize(user_book.errors.count, "error") %> prohibited this user's book from being saved:</h4>
+      <ul>
+        <% user_book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= render("shared/alert", alert_type: "alert-danger") %>
+
+  <div class="mb-3">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.order(:username).map { |user| [user.username, user.id] }, { include_blank: true }, { class: 'form-select' } %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :book_id %>
+    <%= form.select :book_id, Book.order(:title).map { |book| [book.title, book.id] }, { include_blank: true }, { class: 'form-select' } %>
+  </div>
+
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>

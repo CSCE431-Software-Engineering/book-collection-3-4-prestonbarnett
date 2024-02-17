@@ -1,0 +1,45 @@
+<h1>User Books</h1>
+
+<% content_for :alert_content do %>
+  <% notice %>
+<% end %>
+
+<%= render("shared/alert") %>
+
+<div class="card">
+  <div class="card-body">
+    <% if @user_books.present? %>
+      <div id="books">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Book</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @user_books.each do |user_book| %>
+            <tr class="align-middle">
+              <td>
+                <%= user_book.user.username %>
+              </td>
+              <td>
+                <%= user_book.book.title %>
+              </td>
+              <td>
+                <%= link_to("View User Book", user_book_path(user_book), class: "btn btn-primary") %>
+              </td>
+            </tr>
+          <% end %>
+          </table>
+      </div>
+    <% else %>
+      <p>There are no user books yet.</p>
+    <% end %>
+
+    <div>
+      <%= link_to("New User Book", new_user_book_path, class: "btn btn-success") %>
+    </div>
+  </div>
+</div>

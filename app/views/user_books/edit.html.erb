@@ -1,0 +1,13 @@
+<h1>Editing user book</h1>
+
+<%= render("shared/breadcrumb", breadcrumbs: [
+  { name: "User Books", path: user_books_path },
+  { name: "User Book", path: user_book_path(@user_book) },
+  { name: "Edit" }
+]) %>
+
+<div class="card">
+  <div class="card-body">
+    <%= render "form", user_book: @user_book %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<h1>Users</h1>
+
+<% content_for :alert_content do %>
+  <% notice %>
+<% end %>
+
+<%= render("shared/alert") %>
+
+<div class="card">
+  <div class="card-body">
+    <% if @users.present? %>
+      <div id="users">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col" class="flex-grow">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |user| %>
+            <tr class="align-middle">
+              <td>
+                <%= user.username %>
+              </td>
+              <td>
+                <%= link_to("View User", user_path(user), class: "btn btn-primary") %>
+              </td>
+            </tr>
+          <% end %>
+          </table>
+      </div>
+    <% else %>
+      <p>There are no users yet.</p>
+    <% end %>
+
+    <div>
+      <%= link_to("New User", new_user_path, class: "btn btn-success") %>
+    </div>
+  </div>
+</div>

@@ -22,3 +22,18 @@ Book.create!([
   { title: "Jane Eyre", author: "Charlotte Brontë", price: 8.99, published: "1847-10-16", publisher: "Smith, Elder & Co.", release_date: "1847-10-16", pages: 500 },
   { title: "Moby Dick", author: "Herman Melville", price: 11.99, published: "1851-10-18", publisher: "Richard Bentley (London), Harper & Brothers (New York City)", release_date: "1851-10-18", pages: 635 },
 ])
+
+User.create!([
+  { username: "John Doe" },
+  { username: "Jane Doe" }
+])
+
+first_user = User.first
+first_book = Book.first
+
+UserBook.create!(user: first_user, book: first_book)
+
+second_user = User.second
+second_book = Book.second
+
+UserBook.create!(user: second_user, book: second_book)
