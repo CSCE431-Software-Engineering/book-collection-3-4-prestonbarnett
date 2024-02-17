@@ -1,7 +1,7 @@
 <h1>Book</h1>
 
-<%= render("breadcrumb", breadcrumbs: [
-  { name: "Books", path: root_path },
+<%= render("shared/breadcrumb", breadcrumbs: [
+  { name: "Books", path: books_path },
   { name: @book.title },
 ]) %>
 
@@ -9,7 +9,7 @@
   <% notice %>
 <% end %>
 
-<%= render("alert") %>
+<%= render("shared/alert") %>
 
 <div class="card">
   <div class="card-body">
